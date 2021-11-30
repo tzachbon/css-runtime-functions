@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Runtime Functions</title>
+    <style>
+      :root {
+        --color: red;
+      }
+
+      div {
+        height: 10rem;
+        width: 10rem;
+        --lighten-color: var(--color);
+
+        background: paint(lighten);
+        animation: fade-in 2s forwards ease-in infinite;
+        transition: all 1s ease-in;
+      }
+
+      div:hover {
+        --color: blue;
+      }
+
+      @keyframes fade-in {
+        0% {
+          --lighten-amount: 100%;
+        }
+        50% {
+          --lighten-amount: 0%;
+        }
+        100% {
+          --lighten-amount: 100%;
+        }
+      }
+    </style>
+    <script type="module" src="./css-runtime-functions/properties.js"></script>
+    <script>
+      CSS.paintWorklet.addModule('./css-runtime-functions/worklet.js');
+    </script>
+  </head>
+  <body>
+    <div>Hello world</div>
+  </body>
+</html>
