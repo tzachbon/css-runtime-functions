@@ -4,7 +4,29 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Some SEO stuff - this is not part of the example -->
+
+    <meta name="title" content="CSS Runtime Functions" />
+    <meta
+      name="description"
+      content="About
+    Creating CSS Runtime Functions with CSS Houdini"
+    />
+    <meta property="og:title" content="CSS Runtime Functions" />
+    <meta
+      property="og:description"
+      content="About
+    Creating CSS Runtime Functions with CSS Houdini"
+    />
+    <meta property="twitter:title" content="CSS Runtime Functions" />
+    <meta
+      property="twitter:description"
+      content="About
+    Creating CSS Runtime Functions with CSS Houdini"
+    />
     <title>CSS Runtime Functions</title>
+
+    <!-- ########## Start here ########## -->
     <style>
       :root {
         --color: red;
@@ -36,12 +58,15 @@
         }
       }
     </style>
+    <!-- Load the variables for typings -->
     <script type="module" src="./css-runtime-functions/properties.js"></script>
+    <!-- Registering the worklet (for paint API) -->
     <script>
       CSS.paintWorklet.addModule('./css-runtime-functions/worklet.js');
     </script>
   </head>
   <body>
+    <!-- Dummy content -->
     <div>Hello world</div>
   </body>
 </html>
