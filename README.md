@@ -1,18 +1,16 @@
 # CSS Runtime Functions
 
+[See examples!](https://tzachbon.github.io/css-runtime-functions/)
+
 Made with CSS Houdini. This is my experiment with CSS Houdini and the paint API.
 
-CSS Properties cannot be changed dynamically and it is a bummer. Therefore a lot of people go to build time variables and formatters with CSS preprocessor which is the most convenient solution at the moment.
+> Make sure your browser supports houdini [here](https://ishoudinireadyyet.com/)
+
+CSS Properties cannot be changed dynamically and it is a bummer. Therefore a lot of people go to build-time variables and formatters with CSS preprocessor which is the most convenient solution at the moment.
 
 I created here a nice example for a "runtime" formatter (or function if you like) that can change your runtime property dynamically. The only problem is that the solution right now is using the paint API and it could only be used on properties like "background-image" or its shorthands. 
 
 I would really love it if something like [this](https://github.com/w3c/css-houdini-drafts/issues/1007) could exist and make our lives more simple.
-
-## Examples
- 
-All the examples will work on CSS Vars (they are dynamic values)
-
-* [Lighten](https://tzachbon.github.io/css-runtime-functions/)
 
 ## Read more
 * [CSS Houdini](https://houdini.how/)

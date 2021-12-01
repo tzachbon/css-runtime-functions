@@ -1,20 +1,20 @@
 import { parseAmount } from '../helpers/parse-amount.js';
 
-export class Lighten {
+export class Darken {
   static registerProperties() {
     if (typeof CSS === 'undefined') {
       throw new Error('Can not register CSS properties when it is not supported or exists');
     }
 
     CSS.registerProperty({
-      name: Lighten.properties.COLOR,
+      name: Darken.properties.COLOR,
       syntax: '<color>',
       inherits: false,
       initialValue: 'transparent',
     });
 
     CSS.registerProperty({
-      name: Lighten.properties.AMOUNT,
+      name: Darken.properties.AMOUNT,
       syntax: '<percentage>',
       inherits: false,
       initialValue: '0%',
@@ -23,13 +23,13 @@ export class Lighten {
 
   static get properties() {
     return {
-      COLOR: '--lighten-color',
-      AMOUNT: '--lighten-amount',
+      COLOR: '--darken-color',
+      AMOUNT: '--darken-amount',
     };
   }
 
   static get inputProperties() {
-    return [Lighten.properties.COLOR, Lighten.properties.AMOUNT];
+    return [Darken.properties.COLOR, Darken.properties.AMOUNT];
   }
   /**
    *
@@ -39,29 +39,25 @@ export class Lighten {
    */
   paint(ctx, size, properties) {
     const [color, amount] = [
-      properties.get(Lighten.properties.COLOR),
-      parseAmount(properties.get(Lighten.properties.AMOUNT) || CSS.percent(0)),
+      properties.get(Darken.properties.COLOR),
+      parseAmount(properties.get(Darken.properties.AMOUNT) || CSS.percent(0)),
     ];
 
     ctx.fillStyle = color; // normalize the color to hex value
-    ctx.fillStyle = `#${lighten(ctx.fillStyle, amount)}`;
+    ctx.fillStyle = `#${darken(ctx.fillStyle, amount)}`;
 
     ctx.fillRect(0, 0, size.width, size.height);
   }
 }
 
-/**
- * Got it from here:
- * https://gist.github.com/renancouto/4675192
- */
-function lighten(color, percent) {
+function darken(color, percent) {
   color = color.startsWith('#') ? color.substring(1) : color;
 
   let num = parseInt(color, 16),
     amt = Math.round(2.55 * percent),
-    R = (num >> 16) + amt,
-    B = ((num >> 8) & 0x00ff) + amt,
-    G = (num & 0x0000ff) + amt;
+    R = (num >> 16) - amt,
+    B = ((num >> 8) & 0x00ff) - amt,
+    G = (num & 0x0000ff) - amt;
 
   return (
     0x1000000 +

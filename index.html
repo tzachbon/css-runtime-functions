@@ -39,18 +39,46 @@
       div {
         height: 10rem;
         width: 10rem;
-        --lighten-color: var(--color);
-
-        background: paint(lighten);
-        animation: fade-in 2s forwards ease-in infinite;
         transition: all 1s ease-in;
+        animation: 2s forwards ease-in infinite;
+        margin-block: 1rem;
       }
 
-      div:hover {
+      .darken {
+        --darken-color: var(--color);
+
+        background: paint(darken);
+        animation-name: darken-fade-in;
+      }
+
+      .darken:hover {
         --color: blue;
       }
 
-      @keyframes fade-in {
+      .lighten {
+        --lighten-color: var(--color);
+
+        background: paint(lighten);
+        animation-name: lighten-fade-in;
+      }
+
+      .lighten:hover {
+        --color: green;
+      }
+
+      @keyframes darken-fade-in {
+        0% {
+          --darken-amount: 90%;
+        }
+        50% {
+          --darken-amount: 25%;
+        }
+        100% {
+          --darken-amount: 90%;
+        }
+      }
+
+      @keyframes lighten-fade-in {
         0% {
           --lighten-amount: 90%;
         }
@@ -70,7 +98,7 @@
     </script>
   </head>
   <body>
-    <!-- Dummy content -->
-    <div>Hello world</div>
+    <div class="lighten">Lighten example</div>
+    <div class="darken">Darken example</div>
   </body>
 </html>
