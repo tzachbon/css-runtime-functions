@@ -1,3 +1,3 @@
-import { Lighten } from './lighten.js';
+import { Lighten } from './functions/lighten.js';
 
 Lighten.registerProperties();

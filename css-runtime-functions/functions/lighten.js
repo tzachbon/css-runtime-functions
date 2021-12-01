@@ -41,7 +41,7 @@ export class Lighten {
       parseAmount(properties.get(Lighten.properties.AMOUNT) || CSS.percent(0)),
     ];
 
-    ctx.fillStyle = color;
+    ctx.fillStyle = color; // normalize the color to hex value
     ctx.fillStyle = `#${lighten(ctx.fillStyle, amount)}`;
 
     ctx.fillRect(0, 0, size.width, size.height);
