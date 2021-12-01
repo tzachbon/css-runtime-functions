@@ -62,7 +62,12 @@
         }
       }
     </style>
-    <script type="module" src="./css-runtime-functions/register.js"></script>
+    <!-- Load the variables for typings -->
+    <script type="module" src="./css-runtime-functions/register-properties.js"></script>
+    <!-- Registering the worklet (for paint API) -->
+    <script>
+      CSS.paintWorklet.addModule('./css-runtime-functions/worklet.js');
+    </script>
   </head>
   <body>
     <!-- Dummy content -->
